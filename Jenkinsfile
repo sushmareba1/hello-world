@@ -30,4 +30,11 @@ pipeline {
             steps {
                 echo "🚀 Deploy stage started"
                 sh '''
-                    echo "Deploying appl
+                    echo "Deploying applied."
+            }
+         }
+         }
+}
+
+
+
