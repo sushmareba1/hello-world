@@ -1,13 +1,14 @@
 pipeline {
-    agent Test
+    agent {
+        label 'Test'   // This makes the pipeline run on the agent with label 'test'
+    }
 
     stages {
         stage('Build') {
             steps {
-                echo "🔧 Build stage started"
+                echo '🔧 Starting Build Stage...'
                 sh '''
-                    echo "Compiling source code..."
-                    # Simulate build process
+                    echo "Compiling the code..."
                     sleep 2
                     echo "Build completed."
                 '''
@@ -16,26 +17,33 @@ pipeline {
 
         stage('Test') {
             steps {
-                echo "🧪 Test stage started"
+                echo '🧪 Running Tests...'
                 sh '''
                     echo "Running unit tests..."
-                    # Simulate test process
                     sleep 2
-                    echo "All tests passed."
+                    echo "Tests passed!"
                 '''
             }
         }
 
         stage('Deploy') {
             steps {
-                echo "🚀 Deploy stage started"
+                echo '🚀 Deploying Application...'
                 sh '''
-                    echo "Deploying applied."
+                    echo "Deploying to staging environment..."
+                    sleep 2
+                    echo "Deployment successful."
                 '''
             }
-         }
-         }
+        }
+    }
+
+    post {
+        success {
+            echo '✅ Pipeline completed successfully.'
+        }
+        failure {
+            echo '❌ Pipeline failed.'
+        }
+    }
 }
-
-
-
