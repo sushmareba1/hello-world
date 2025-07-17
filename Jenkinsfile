@@ -31,6 +31,7 @@ pipeline {
                 echo "🚀 Deploy stage started"
                 sh '''
                     echo "Deploying applied."
+                '''
             }
          }
          }
